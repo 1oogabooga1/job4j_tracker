@@ -8,7 +8,7 @@ public class Student {
         petya.music();
         petya.sing();
         petya.sing();
-
+        petya.sing();
     }
 
     public void sing() {
