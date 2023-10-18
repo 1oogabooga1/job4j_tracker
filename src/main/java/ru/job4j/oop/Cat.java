@@ -21,7 +21,7 @@ public class Cat {
         black.giveNick("Black");
         System.out.println("There are black's food.");
         black.show();
-        System.out.println("There are gav's food.");
+        System.out.println("There are gav's food");
         gav.show();
     }
 
