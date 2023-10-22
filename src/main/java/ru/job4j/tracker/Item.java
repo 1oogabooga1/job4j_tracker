@@ -1,6 +1,4 @@
 package ru.job4j.tracker;
-
-import java.sql.SQLOutput;
 import java.time.LocalDateTime;
 
 public class Item {
@@ -38,14 +36,5 @@ public class Item {
 
     public LocalDateTime getCreated() {
         return created;
-    }
-
-    public class StartUI {
-
-        public static void main(String[] args) {
-            Item item = new Item();
-            System.out.println(item.getCreated());
-
-        }
     }
 }
