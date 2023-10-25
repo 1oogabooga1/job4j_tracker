@@ -21,7 +21,7 @@ public enum Status {
         private String message = "Авто ожидает ремонта";
 
         @Override
-        public String getMessage () {
+        public String getMessage() {
             return message;
         }
     },
