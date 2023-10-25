@@ -7,7 +7,7 @@ public class StartUI {
         boolean run = true;
         while (run) {
             showMenu();
-            System.out.println("ВЫбрать: ");
+            System.out.println("Выбрать: ");
             int select = Integer.parseInt(scanner.nextLine());
             if (select == 0) {
                 System.out.println("=== Создание новой заявки ===");
@@ -18,9 +18,19 @@ public class StartUI {
                 System.out.println("Добавленная заявка: " + item);
             } else if (select == 6) {
                 run = false;
+            } else if (select == 1) {
+                System.out.println("=== Вывод всех заявок ===");
+                Item[] items = tracker.findAll();
+                if (items.length > 0) {
+                    for (Item item : items) {
+                        System.out.println(item);
+                    }
+                } else {
+                        System.out.println("Хранилище еще не содержит заявок");
+                    }
+                }
             }
         }
-    }
 
     private void showMenu() {
         String[] menu = {
