@@ -26,12 +26,23 @@ public class StartUI {
                         System.out.println(item);
                     }
                 } else {
-                        System.out.println("Хранилище еще не содержит заявок");
-                    }
+                    System.out.println("Хранилище еще не содержит заявок");
+                }
+            } else if (select == 2) {
+                System.out.println("=== Редактирование заявки ===");
+                System.out.println("Введите id: ");
+                int id = Integer.parseInt(scanner.nextLine());
+                System.out.println("Введите имя: ");
+                String name = scanner.nextLine();
+                Item item = new Item(name);
+                if (tracker.replace(id, item)) {
+                    System.out.println("Заявка успешно изменена.");
+                } else {
+                    System.out.println("Ошибка замены заявки.");
                 }
             }
         }
-
+    }
     private void showMenu() {
         String[] menu = {
                 "Добавить новую заявку", "Показать все заявки", "Изменить заявку",
