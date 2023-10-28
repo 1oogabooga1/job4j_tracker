@@ -41,7 +41,7 @@ class StartUITest {
     void whenDeleteItem() {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
-        Item item = tracker.add(new Item("Deleted item"));
+        Item item = new Item();
         Input in = new StubInput(
                 new String[] {"0", String.valueOf(item.getId()), "1"}
         );
