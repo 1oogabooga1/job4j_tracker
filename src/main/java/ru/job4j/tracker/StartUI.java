@@ -13,7 +13,7 @@ public class StartUI {
             showMenu(actions);
             int select = input.askInt("Выбрать: ");
             if (select < 0 || select >= actions.length) {
-                out.println("Неверный ввод, вы можете выбрать: 0 .." + (actions.length - 1));
+                out.println("Неверный ввод, вы можете выбрать: 0 .. " + (actions.length - 1));
                 continue;
             }
             UserAction action = actions[select];
