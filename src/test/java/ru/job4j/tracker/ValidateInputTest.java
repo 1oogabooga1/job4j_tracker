@@ -29,9 +29,12 @@ class ValidateInputTest {
     @Test
     public void whenManyValidInputs() {
         Output out = new StubOutput();
-        Input in = new StubInput(new String[] {"1", "1"});
+        Input in = new StubInput(new String[] {"1", "7"});
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu: ");
+        assertThat(selected).isEqualTo(1);
+        assertThat(selected).isEqualTo(1);
+        assertThat(selected).isEqualTo(1);
         assertThat(selected).isEqualTo(1);
     }
 
