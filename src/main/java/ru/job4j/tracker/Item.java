@@ -45,7 +45,7 @@ public class Item {
     @Override
     public String toString() {
         return "Item{"
-                + "created=" + created.format(FORMATTER)
+                + "created=" + created
                 + ", id=" + id
                 + ", name='" + name + '\''
                 + '}';
