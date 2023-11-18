@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tracker {
-    private final List<Item> items = new ArrayList<>(100);
+    private final List<Item> items = new ArrayList<>();
 
     private int ids = 1;
 
@@ -26,7 +26,7 @@ public class Tracker {
                 result.add(it);
             }
         }
-        return List.copyOf(result);
+        return result;
     }
 
     public Item findById(int id) {
