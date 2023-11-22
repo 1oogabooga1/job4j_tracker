@@ -4,14 +4,15 @@ import java.util.*;
 
 public class AnalyzeByMap {
     public static double averageScore(List<Pupil> pupils) {
-        double rsl = 0;
+        double score = 0;
+        int totalSubjects = 0;
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                double score = (double) subject.score() / pupil.subjects().size() / pupils.size();
-                rsl += score;
+                score += subject.score();
+                totalSubjects++;
             }
         }
-        return rsl;
+        return score / totalSubjects;
     }
 
     public static List<Label> averageScoreByPupil(List<Pupil> pupils) {
@@ -68,10 +69,7 @@ public class AnalyzeByMap {
 
     public static Label getMaxLabel(Map<String, Integer> map) {
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            int max = Collections.max(map.values());
-            if (entry.getValue() == max) {
-                return new Label(entry.getKey(), entry.getValue());
-            }
+            return new Label(entry.getKey(), Collections.max(map.values()));
         }
         return null;
     }
