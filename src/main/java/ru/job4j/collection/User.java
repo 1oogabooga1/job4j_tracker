@@ -23,8 +23,8 @@ public class User implements Comparable<User> {
 
     @Override
     public int compareTo(User o) {
-        return Comparator.comparing(User :: getName)
-                .thenComparing(User :: getAge)
+        return Comparator.comparing(User::getName)
+                .thenComparing(User::getAge)
                 .compare(this, o);
     }
 
