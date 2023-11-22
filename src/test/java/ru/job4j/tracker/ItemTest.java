@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ItemTest {
     @Test
-    void whenSortUp() {
+    void whenSortDown() {
         List<Item> items = Arrays.asList(
                 new Item("see"),
                 new Item("goodbye"),
@@ -21,12 +21,12 @@ class ItemTest {
                 new Item("hello"),
                 new Item("goodbye")
         );
-        items.sort(new ItemAscByName());
+        items.sort(new ItemDescByName());
         assertThat(items).isEqualTo(exp);
     }
 
     @Test
-    void whenSortDown() {
+    void whenSortUp() {
         List<Item> items = Arrays.asList(
                 new Item("see"),
                 new Item("goodbye"),
@@ -37,7 +37,7 @@ class ItemTest {
                 new Item("hello"),
                 new Item("see")
         );
-        items.sort(new ItemDescByName());
+        items.sort(new ItemAscByName());
         assertThat(items).isEqualTo(exp);
     }
 }
