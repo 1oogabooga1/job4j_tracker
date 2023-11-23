@@ -68,9 +68,12 @@ public class AnalyzeByMap {
     }
 
     public static Label getMaxLabel(Map<String, Integer> map) {
+        Map.Entry<String, Integer> maxEntry = null;
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            return new Label(entry.getKey(), Collections.max(map.values()));
+            if (maxEntry == null || entry.getValue() > maxEntry.getValue()) {
+                maxEntry = entry;
+            }
         }
-        return null;
+        return new Label(maxEntry.getKey(), maxEntry.getValue());
     }
 }
