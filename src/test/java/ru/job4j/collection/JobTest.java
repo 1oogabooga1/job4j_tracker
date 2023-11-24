@@ -9,7 +9,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 class JobTest {
     @Test
     void whenNameUp() {
-        Comparator<Job> nameUp = new NameUp();
+        Comparator<Job> nameUp = new JobAscByName();
         int rsl = nameUp.compare(
                 new Job("Hello", 0),
                 new Job("Goodbye", 1)
@@ -19,7 +19,7 @@ class JobTest {
 
     @Test
     void whenNameDown() {
-        Comparator<Job> nameDown = new NameDown();
+        Comparator<Job> nameDown = new JobDescByName();
         int rsl = nameDown.compare(
                 new Job("Hello", 0),
                 new Job("Goodbye", 1)
@@ -29,7 +29,7 @@ class JobTest {
 
     @Test
     void whenPriorityUp() {
-        Comparator<Job> priorityUp = new PriorityUp();
+        Comparator<Job> priorityUp = new JobAscByPriority();
         int rsl = priorityUp.compare(
                 new Job("Hello", 0),
                 new Job("Goodbye", 1)
@@ -39,7 +39,7 @@ class JobTest {
 
     @Test
     void whenPriorityDown() {
-        Comparator<Job> priorityDown = new PriorityDown();
+        Comparator<Job> priorityDown = new JobDescByPriority();
         int rsl = priorityDown.compare(
                 new Job("Hello", 0),
                 new Job("Goodbye", 1)
@@ -49,7 +49,7 @@ class JobTest {
 
     @Test
     void whenNameAndPriorityUp() {
-        Comparator<Job> cmpNamePriority = new NameDown().thenComparing(new PriorityDown());
+        Comparator<Job> cmpNamePriority = new JobDescByName().thenComparing(new JobDescByPriority());
         int rsl = cmpNamePriority.compare(
                 new Job("Impl task", 0),
                 new Job("Fix bug", 1)
@@ -59,11 +59,11 @@ class JobTest {
 
     @Test
     void whenNameAndPriorityDown() {
-        Comparator<Job> cmpNamePriority = new NameUp().thenComparing(new PriorityUp());
+        Comparator<Job> cmpNamePriority = new JobAscByName().thenComparing(new JobAscByPriority());
         int rsl = cmpNamePriority.compare(
-                new Job("Impl task", 0),
+                new Job("Fix bug", 0),
                 new Job("Fix bug", 1)
         );
-        assertThat(rsl).isGreaterThan(0);
+        assertThat(rsl).isLessThan(0);
     }
 }
