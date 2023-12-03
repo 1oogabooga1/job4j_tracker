@@ -33,13 +33,11 @@ public class AnalyzeByMap {
         Map<String, Integer> map = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                int score = map.getOrDefault(subject.name(), 0);
-                map.put(subject.name(), score + subject.score());
+                map.merge(subject.name(), subject.score(), (oldValue, newValue) -> oldValue + subject.score());
             }
         }
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            int score = entry.getValue() / pupils.size();
-            result.add(new Label(entry.getKey(), score));
+            result.add(new Label(entry.getKey(), entry.getValue() / pupils.size()));
         }
         return result;
     }
@@ -47,11 +45,9 @@ public class AnalyzeByMap {
     public static Label bestStudent(List<Pupil> pupils) {
         Map<String, Integer> map = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
-            int score = 0;
             for (Subject sub : pupil.subjects()) {
-                score += sub.score();
+                map.merge(pupil.name(), sub.score(), (oldValue, newValue) -> oldValue + sub.score());
             }
-            map.put(pupil.name(), score);
         }
         return getMaxLabel(map);
     }
@@ -60,8 +56,7 @@ public class AnalyzeByMap {
         Map<String, Integer> map = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                int score = map.getOrDefault(subject.name(), 0);
-                map.put(subject.name(), score + subject.score());
+                map.merge(subject.name(), subject.score(), (oldValue, newValue) -> oldValue + subject.score());
             }
         }
         return getMaxLabel(map);
