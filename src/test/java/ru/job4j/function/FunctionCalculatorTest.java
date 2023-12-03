@@ -59,24 +59,24 @@ class FunctionCalculatorTest {
     @Test
     void whenShowingFunctionFirst() {
         FunctionCalculator function = new FunctionCalculator();
-        List<Double> result = function.diapason(1, 4, x -> 7 * Math.pow(x, x) + 5);
-        List<Double> expected = Arrays.asList(12D, 33D, 194D);
+        List<Double> result = function.diapason(1, 4, x -> 7 * Math.pow(2, x) + 5);
+        List<Double> expected = Arrays.asList(19D, 33D, 61D);
         assertThat(result).containsAll(expected);
     }
 
     @Test
     void whenShowingFunctionSecond() {
         FunctionCalculator function = new FunctionCalculator();
-        List<Double> result = function.diapason(4, 8, x -> 7 * Math.pow(x, x) + 5);
-        List<Double> expected = Arrays.asList(1797D, 21880D, 326597D);
+        List<Double> result = function.diapason(4, 8, x -> 7 * Math.pow(2, x) + 5);
+        List<Double> expected = Arrays.asList(117D, 229D, 453D, 901D);
         assertThat(result).containsAll(expected);
     }
 
     @Test
     void whenShowingFunctionThird() {
         FunctionCalculator function = new FunctionCalculator();
-        List<Double> result = function.diapason(-3, 0, x -> 4 * Math.pow(x, x) + 1);
-        List<Double> expected = Arrays.asList(0.8518518518518519D, 2D, -3D);
+        List<Double> result = function.diapason(-3, 0, x -> 4 * Math.pow(2, x) + 1);
+        List<Double> expected = Arrays.asList(1.5D, 2D, 3D);
         assertThat(result).containsAll(expected);
     }
 }
