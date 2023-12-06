@@ -46,7 +46,7 @@ public class Analyze {
     public static Tuple bestSubject(Stream<Pupil> stream) {
         return stream
                 .flatMap(s -> s.subjects().stream())
-                .collect(Collectors.groupingBy(Subject::name, LinkedHashMap::new,
+                .collect(Collectors.groupingBy(Subject::name,
                         Collectors.summingDouble(Subject::score)))
                 .entrySet().stream()
                 .map(n -> new Tuple(n.getKey(), n.getValue()))
