@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Properties;
 
 public class SqlTracker implements Store {
@@ -47,6 +48,7 @@ public class SqlTracker implements Store {
                 Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getName());
             statement.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
+            statement.executeUpdate();
             try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     item.setId(generatedKeys.getInt(1));
@@ -103,7 +105,7 @@ public class SqlTracker implements Store {
         List<Item> all = findAll();
         List<Item> list = new ArrayList<>();
         for (Item it : all) {
-            if (it.getName() == key) {
+            if (it.getName().equals(key)) {
                 list.add(it);
             }
         }
@@ -113,7 +115,6 @@ public class SqlTracker implements Store {
     @Override
     public Item findById(int id) {
         List<Item> all = findAll();
-        List<Item> list = new ArrayList<>();
         for (Item it : all) {
             if (it.getId() == id) {
                 return it;
@@ -121,4 +122,5 @@ public class SqlTracker implements Store {
         }
         return null;
     }
+
 }
