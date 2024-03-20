@@ -43,10 +43,15 @@ public class SqlTracker implements Store {
 
     @Override
     public Item add(Item item) {
-        init();
-        try (PreparedStatement statement = connection.prepareStatement("INSERT INTO items(name, created) VALUES (?, ?)")) {
+        try (PreparedStatement statement = connection.prepareStatement("INSERT INTO items(name, created) VALUES (?, ?)",
+                Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getName());
             statement.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    item.setId(generatedKeys.getInt(1));
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -55,7 +60,6 @@ public class SqlTracker implements Store {
 
     @Override
     public boolean replace(int id, Item item) {
-        init();
         Item oldItem = findById(id);
         if (oldItem != null) {
             try (Statement statement = connection.createStatement()) {
@@ -72,7 +76,6 @@ public class SqlTracker implements Store {
 
     @Override
     public void delete(int id) {
-        init();
         try (Statement statement = connection.createStatement()) {
             String sql = String.format("DELETE FROM items where items.id = %s",
                     id);
