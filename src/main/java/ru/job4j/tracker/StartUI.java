@@ -48,6 +48,8 @@ public class StartUI {
                     new FindAll(output),
                     new FindById(output),
                     new FindByName(output),
+                    new CreateManyItems(output),
+                    new DeleteAllItems(output),
                     new Exit(output)
             );
             new StartUI(output).init(input, tracker, actions);
