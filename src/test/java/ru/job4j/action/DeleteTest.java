@@ -12,7 +12,7 @@ class DeleteTest {
     @Test
     void whenDeleteSuccessfully() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Item item = tracker.add(new Item("name", 1));
         Input input = mock(Input.class);
         Delete delete = new Delete(out);
@@ -25,7 +25,7 @@ class DeleteTest {
     @Test
     void whenDeleteUnsuccessfully() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Item item = tracker.add(new Item("name", 1));
         Input input = mock(Input.class);
         Delete delete = new Delete(out);

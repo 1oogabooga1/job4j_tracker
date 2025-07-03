@@ -12,7 +12,7 @@ class FindByIdTest {
     @Test
     void whenFindByIdSuccessfully() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Item item = tracker.add(new Item("name", 1));
         FindById findById = new FindById(out);
 
@@ -31,7 +31,7 @@ class FindByIdTest {
     @Test
     void whenFindByIdUnsuccessfully() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Item item = tracker.add(new Item("name", 1));
         FindById findById = new FindById(out);
 

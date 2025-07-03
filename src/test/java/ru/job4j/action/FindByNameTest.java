@@ -13,7 +13,7 @@ class FindByNameTest {
 
     @Test
     void whenFindByNameSuccessfully() {
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Output out = new StubOutput();
         Input input = mock(Input.class);
         Item item = tracker.add(new Item("name", 1));
@@ -26,7 +26,7 @@ class FindByNameTest {
 
     @Test
     void whenNameIsNullThenThrowsException() {
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Output out = new StubOutput();
         Input input = mock(Input.class);
         tracker.add(new Item("name", 1));

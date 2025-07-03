@@ -12,7 +12,7 @@ class ReplaceTest {
     @Test
     public void whenItemWasReplacedSuccessfully() {
         Output output = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
         Replace replaceAction = new Replace(output);
@@ -34,7 +34,7 @@ class ReplaceTest {
     @Test
     public void whenItemWasReplacedUnsuccessfully() {
         Output output = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         tracker.add(new Item("Replaced item"));
         Replace replaceAction = new Replace(output);
 
