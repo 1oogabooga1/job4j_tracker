@@ -95,7 +95,10 @@ public class SqlTracker implements Store {
         try (Statement statement = connection.createStatement()) {
             ResultSet result = statement.executeQuery("SELECT * FROM items");
             while (result.next()) {
-                list.add(new Item(result.getString(2), result.getInt(1)));
+                var item = new Item();
+                item.setName(result.getString(2));
+                item.setId(result.getInt(1));
+                list.add(item);
             }
         } catch (Exception e) {
             e.printStackTrace();

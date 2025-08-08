@@ -19,7 +19,8 @@ public class Replace implements UserAction {
         out.println("=== Редактирование заявки ===");
         int id = input.askInt("Введите id: ");
         String name = input.askStr("Введите имя: ");
-        Item item = new Item(name);
+        Item item = new Item();
+        item.setName(name);
         if (store.replace(id, item)) {
             out.println("Заявка успешно изменена.");
         } else {

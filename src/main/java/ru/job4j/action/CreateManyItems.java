@@ -22,7 +22,9 @@ public class CreateManyItems implements UserAction {
         out.println("=== Create many items ===");
         int count = input.askInt("Введите кол-во заявок ");
         for (int i = 0; i < count; i++) {
-            tracker.add(new Item("Заявка № " + i));
+            var item = new Item();
+            item.setName("Заявка № " + i);
+            tracker.add(item);
         }
         out.println("Добавлено заявок: " + count);
         return true;

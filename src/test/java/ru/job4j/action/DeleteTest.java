@@ -13,7 +13,10 @@ class DeleteTest {
     void whenDeleteSuccessfully() {
         Output out = new StubOutput();
         Store tracker = new MemTracker();
-        Item item = tracker.add(new Item("name", 1));
+        var item = new Item();
+        item.setName("name");
+        item.setId(1);
+        tracker.add(item);
         Input input = mock(Input.class);
         Delete delete = new Delete(out);
         when(input.askInt(any(String.class))).thenReturn(item.getId());
@@ -26,7 +29,10 @@ class DeleteTest {
     void whenDeleteUnsuccessfully() {
         Output out = new StubOutput();
         Store tracker = new MemTracker();
-        Item item = tracker.add(new Item("name", 1));
+        var item = new Item();
+        item.setName("name");
+        item.setId(1);
+        tracker.add(item);
         Input input = mock(Input.class);
         Delete delete = new Delete(out);
         delete.execute(input, tracker);

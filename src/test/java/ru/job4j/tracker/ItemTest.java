@@ -22,7 +22,10 @@ class ItemTest {
                 new Item("goodbye")
         );
         items.sort(new ItemDescByName());
-        assertThat(items).isEqualTo(exp);
+        assertThat(items)
+                .usingRecursiveComparison()
+                .ignoringFields("created")
+                .isEqualTo(exp);
     }
 
     @Test
@@ -38,6 +41,9 @@ class ItemTest {
                 new Item("see")
         );
         items.sort(new ItemAscByName());
-        assertThat(items).isEqualTo(exp);
+        assertThat(items)
+                .usingRecursiveComparison()
+                .ignoringFields("created")
+                .isEqualTo(exp);
     }
 }
