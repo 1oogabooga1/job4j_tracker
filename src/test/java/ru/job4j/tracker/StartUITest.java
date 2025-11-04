@@ -44,7 +44,7 @@ class StartUITest {
     void whenDeleteItem() {
         Output out = new StubOutput();
         Store tracker = new MemTracker();
-        Item item = new Item();
+        Item item = tracker.add(new Item());
         Input in = new StubInput(
                 List.of(new String[]{"0", String.valueOf(item.getId()), "1"})
         );
