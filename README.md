@@ -1,19 +1,58 @@
-# job4j_tracker
+# Job4j Tracker
 
-## О проекте
+![CI GitHubAction](https://github.com/1oogabooga1/job4j_tracker/actions/workflows/maven.yml/badge.svg)
 
-![CI GitHubAction](https://github.com/peterarsentev/job4j_tracker/actions/workflows/maven.yml/badge.svg)
+## Overview
 
-Этот проект - консольное приложение. Пользователю отображается меню с возможностями программы.
+Job4j Tracker is a console-driven application built as part of the Job4j Java educational program.
+It demonstrates clean OOP design, modular architecture, consistent use of interfaces, and unit testing.
 
-Программа может:
+The application allows users to manage task “items” through a structured console menu.
 
-1. Добавлять заявку.
+## Features 
+	-	➕ Add new items
+	-	♻️ Update existing items by ID
+	-	🗑 Delete items by ID
+	-	📋 Display all items
+	-	🔎 Search items by name
+	-	🛡 Input validation for menu selections and IDs
+	-	🧩 Easily extendable command system based on the Strategy pattern
 
-1. Заменять заявку на новую заявку по ID.
+## Tech Stack & Architecture
 
-1. Удалять заявку по ID.
+### Core Technologies
+	-	Java 17
+	-	Maven
+	-	JDBC — early persistence layer
+	-	Hibernate ORM — later-stage storage abstraction and entity mapping
+	-	Lombok — boilerplate reduction (models, DTOs, builders)
+	-	JUnit 5, Hamcrest — testing
+	-	GitHub Actions CI
+	-	H2 / PostgreSQL (depending on module)
 
-1. Отображать список всех заявок.
+## What I Learned
+#### Developing this project helped me build a solid foundation in:
+	-	OOP & SOLID principles
+	-	Interface-driven development
+	-	Dependency inversion
+	-	Separation of concerns
+	-	Unit testing & mocks
+	-   Designing maintainable console applications
+	-	Java Collections 
+    -   Sql usage 
+  
 
-1. Производить поиск по имени заявки.
+#### This was one of the first large educational projects in my Java journey.
+
+## Project Evolution
+This project was developed throughout the Job4j training program and evolved along with my skills.
+Each module of the course introduced new technologies, patterns, and architectural principles, which were gradually integrated into the project.
+#### As a result, different stages of the Tracker include:
+	-	JDK core features — collections, OOP, interfaces, exception handling
+	-	JDBC — first introduction to persistence and SQL operations
+	-	Hibernate ORM — working with entities, sessions, and configuration
+	-	Lombok — simplifying boilerplate (getters, constructors, builders)
+	-	Layered architecture — separation into service, repository, and UI layers
+	-   Unit testing & mocks — building stable and testable modules 
+    -   Different databases - PostgreSQL, H2, Liquibase
+While the final version of the Tracker remains a console application, internally it reflects the full progression of the Job4j program, touching key backend development skills.
