@@ -264,3 +264,6 @@ create table items (
     name text,
     created timestamp
 ) [42101-222]
+2026-04-09 19:02:53.735520+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Ошибка преобразования данных при конвертации "TIMESTAMP to INTEGER"
+Data conversion error converting "TIMESTAMP to INTEGER" [22018-222]

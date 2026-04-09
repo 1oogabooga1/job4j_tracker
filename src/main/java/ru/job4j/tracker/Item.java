@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import ru.job4j.toone.User;
 
 import javax.persistence.*;
@@ -13,15 +14,25 @@ import java.util.List;
 @Entity
 @Table(name = "items")
 @Data
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Item {
-
-    private LocalDateTime created = LocalDateTime.now();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Integer id;
 
     private String name;
+
+    private LocalDateTime created = LocalDateTime.now();
+
+    @ManyToMany
+    @JoinTable(
+            name = "participates",
+            joinColumns = { @JoinColumn(name = "item_id") },
+            inverseJoinColumns = { @JoinColumn(name = "user_id") }
+    )
+    private List<User> participates = new ArrayList<>();
 
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
 
@@ -36,13 +47,4 @@ public class Item {
         this.name = name;
         this.id = id;
     }
-
-    @ManyToMany
-    @JoinTable(
-            name = "participates",
-            joinColumns = { @JoinColumn(name = "item_id") },
-            inverseJoinColumns = { @JoinColumn(name = "user_id") }
-    )
-    private List<User> participates = new ArrayList<>();
-
 }

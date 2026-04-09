@@ -4,7 +4,6 @@ import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Properties;
 
 public class SqlTracker implements Store {
@@ -95,7 +94,7 @@ public class SqlTracker implements Store {
         try (Statement statement = connection.createStatement()) {
             ResultSet result = statement.executeQuery("SELECT * FROM items");
             while (result.next()) {
-                list.add(new Item(result.getString(2), result.getInt(1)));
+                list.add(new Item(result.getString("name"), result.getInt("id")));
             }
         } catch (Exception e) {
             e.printStackTrace();

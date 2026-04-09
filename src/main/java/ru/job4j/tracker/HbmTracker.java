@@ -37,6 +37,7 @@ public class HbmTracker implements Store, AutoCloseable {
             session.beginTransaction();
             result = session.createQuery("UPDATE Item SET name = :name, created = :created WHERE id = :id")
                     .setParameter("id", id)
+                    .setParameter("name", item.getName())
                     .setParameter("created", item.getCreated())
                     .executeUpdate() != 0;
             session.getTransaction().commit();
@@ -67,21 +68,22 @@ public class HbmTracker implements Store, AutoCloseable {
     @Override
     public List<Item> findAll() {
         try (Session session = sessionFactory.openSession()) {
-            return session.createQuery("FROM Item", Item.class).list();
+            return session.createQuery("SELECT DISTINCT i FROM Item i LEFT JOIN FETCH i.participates", Item.class).list();
         }
     }
 
     @Override
     public List<Item> findByName(String key) {
         try (Session session = sessionFactory.openSession()) {
-            return session.createQuery("FROM Item WHERE name = :name", Item.class).setParameter("name", key).list();
+            return session.createQuery("SELECT DISTINCT i FROM Item i LEFT JOIN FETCH i.participates WHERE i.name = :name",
+                    Item.class).setParameter("name", key).list();
         }
     }
 
     @Override
     public Item findById(int id) {
         try (Session session = sessionFactory.openSession()) {
-            return session.createQuery("FROM Item WHERE id = :id", Item.class).setParameter("id", id).uniqueResult();
+            return session.createQuery("SELECT DISTINCT i FROM Item i LEFT JOIN FETCH i.participates WHERE i.id = :id", Item.class).setParameter("id", id).uniqueResult();
         }
     }
 

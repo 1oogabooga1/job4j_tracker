@@ -14,5 +14,6 @@
     <include file="db/scripts/004_ddl_create_users_table.sql"/>
     <include file="db/scripts/005_ddl_add_table_j_user_notification.sql"/>
     <include file="db/scripts/006_ddl_create_participates_table.sql"/>
+    <include file="db/scripts/007_dml_alter_table_items_edit_column_created.sql"/>
 
 </databaseChangeLog>
